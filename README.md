@@ -1,7 +1,7 @@
 Original App Design Project - README Template
 ===
 
-# APP_NAME_HERE
+# FootyHi-Lite
 
 ## Table of Contents
 1. [Overview](#Overview)
@@ -11,16 +11,17 @@ Original App Design Project - README Template
 
 ## Overview
 ### Description
-[Description of your app]
+Tracks currently playing teams, athletes and highlights best performers.
+This app will use many APIs built by https://app.sportdataapi.com/ to display information regarding currently playing teams and their performance statistics, and highlights (@ top of screen) the best performers, and their upcoming games. May be used to indicate best bets.
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
-- **Category:**
-- **Mobile:**
-- **Story:**
-- **Market:**
-- **Habit:**
-- **Scope:**
+- **Category:** Sports Statistics
+- **Mobile:** iOS
+- **Story:** User can information for each team and player, regarding their number of wins, losses, goals and win streaks.
+- **Market:** Football fans, sports commentators
+- **Habit:** Daily use, during sport season peak, closer to play-offs.
+- **Scope:** API allows 500 requests daily.
 
 ## Product Spec
 
@@ -28,43 +29,44 @@ Original App Design Project - README Template
 
 **Required Must-have Stories**
 
-* [fill in your required user stories here]
-* ...
+* User can view scrolling table for each league, filtering by teams or players.
+* User can click on teams and players, taken to a separate page to view more detailed images.
+* Players that are performing very well, based on some calculation, are displayed as "on-fire" and pinned to the top
 
 **Optional Nice-to-have Stories**
 
-* [fill in your required user stories here]
-* ...
+* Locally, user can make a list of favored teams and players (stored in a separate view the user can enter).
+* Teams that have had a winning streak in the recent weeks, and who have an upcoming game, are displayed as "favored bets" and pinned to the top.
+
 
 ### 2. Screen Archetypes
 
-* [list first screen here]
-   * [list associated required story here]
+* Main Storyboard
+   * Immediately display list of teams or players (based on user's persisted selection)
    * ...
-* [list second screen here]
-   * [list associated required story here]
+* Info Screen
+   * Displays stats and info (bio, etc) regarding the selected team or player from the main list.
    * ...
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* [fill out your first tab]
-* [fill out your second tab]
-* [fill out your third tab]
+* List of teams
+* List of players
+* Favored teams
+* Favored players
 
 **Flow Navigation** (Screen to Screen)
 
-* [list first screen here]
-   * [list screen navigation here]
-   * ...
-* [list second screen here]
-   * [list screen navigation here]
-   * ...
+* Main storyboard
+   * Selecting a team or player on the main storyboard navigates to the "info" page
+   * Navigation Bar: Teams, Players, Favored Teams, Favored Players.
+
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/iospod1/groupproject/blob/main/FootyHi-Lite-Mockup.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
