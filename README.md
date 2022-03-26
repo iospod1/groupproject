@@ -1,6 +1,3 @@
-Original App Design Project - README Template
-===
-
 # FootyHi-Lite
 
 ## Table of Contents
