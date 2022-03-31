@@ -77,7 +77,10 @@ This app will use many APIs built by https://app.sportdataapi.com/ to display in
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+| Number | Rider        | Time
+| 1      | Bullet Bob   | 56:07
+| 2      | Clumsy Colin | DNF 
+| 3      | Swift Susan  | 55:13
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
