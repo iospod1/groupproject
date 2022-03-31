@@ -78,11 +78,12 @@ This app will use many APIs built by https://app.sportdataapi.com/ to display in
 [This section will be completed in Unit 9]
 ### Models
 
+#### Team
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| Property | Type | Description | 
+| ------------- | ------------- | ------------- |
+| Content Cell  | Content Cell  | |
+| Content Cell  | Content Cell  | |
 
 ### Networking
 - [Add list of network requests by screen ]
