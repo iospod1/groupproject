@@ -88,8 +88,34 @@ This app will use many APIs built by https://app.sportdataapi.com/ to display in
 | wins  | Integer  | The number of winning game |
 | loses  | Integer  | The number of losing game |
 | topPlayer  | String  | The name of top player |
+| teamIcon| Image| The icon of the team | 
 
+#### Player
 
+| Property | Type | Description | 
+| ------------- | ------------- | ------------- |
+| playerName  | String  | The player name |
+| playerRank  | Integer  | The player's rank |
+| teamName  | String  | The players' team name |
+| Assists  | Integer  | The number of assists |
+| Goals  | Integer  | The number of goals |
+| goalsExpentancy  | Integer  | The expected time per goal |
+| playerImage| Image| The image of the player | 
+
+#### Bet
+
+| Property | Type | Description | 
+| ------------- | ------------- | ------------- |
+| teamName  | String  | The team of the bet |
+| gamesPlayed  | Integer  | The number of games played in the season |
+| wins  | Integer  | The number of wining in the season |
+| draws | Integer  | The number of draws in the season |
+| loses  | Integer  | The number of loses in the season |
+| prev6Goals  | Integer  | The goal for previous 6 games|
+| prev6wins| Integer| The number of winning in previous 6 games |
+| prev6loses| Integer| The number of losing in previous 6 games |
+| prev6draws | Integer  | The number of draws in previous 6 games |
+| goalDifference | Integer| The difference in goal and reality|
 
 ### Networking
 - [Add list of network requests by screen ]
