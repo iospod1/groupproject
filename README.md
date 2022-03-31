@@ -63,9 +63,14 @@ This app will use many APIs built by https://app.sportdataapi.com/ to display in
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="https://github.com/iospod1/groupproject/blob/main/FootyHi-Lite-Mockup.png" width=600>
+<img src="https://github.com/iospod1/groupproject/blob/main/UIDesign.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
+* Wireframe
+   * The wireframe above shows the expected flow and views of the app, including the Navigation bar at the top.
+   * Navigation Bar: Teams, Players, Favored Teams, Favored Players.
+   * The details page will be populated with data obtained from the API mentioned above, displaying team performance related information.
+   * The "Bets" page will require some calculation to trigger some extra visuals and/or calculations to highlight the team suggested for a winning bet.
 
 ### [BONUS] Interactive Prototype
 
