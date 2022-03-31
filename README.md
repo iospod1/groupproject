@@ -82,8 +82,14 @@ This app will use many APIs built by https://app.sportdataapi.com/ to display in
 
 | Property | Type | Description | 
 | ------------- | ------------- | ------------- |
-| Content Cell  | Content Cell  | |
-| Content Cell  | Content Cell  | |
+| teamName  | String  | The team name |
+| teamRank  | Integer  | The team's rank |
+| teamGoals  | Integer  | The team's goals|
+| wins  | Integer  | The number of winning game |
+| loses  | Integer  | The number of losing game |
+| topPlayer  | String  | The name of top player |
+
+
 
 ### Networking
 - [Add list of network requests by screen ]
