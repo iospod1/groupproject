@@ -116,6 +116,7 @@ This app will use many APIs built by https://app.sportdataapi.com/ to display in
 | prev6loses| Integer| The number of losing in previous 6 games |
 | prev6draws | Integer  | The number of draws in previous 6 games |
 | goalDifference | Integer| The difference in goal and reality|
+| teamIcon | Image| The image of the team|
 
 ### Networking
 - [Add list of network requests by screen ]
