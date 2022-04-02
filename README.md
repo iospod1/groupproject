@@ -121,24 +121,17 @@ This app will use many APIs built by https://app.sportdataapi.com/ to display in
 ### Networking
 1. **Home Feed Screen**
 - (Read/GET) Query list of games 
-
+```
 let query = PFQuery(className:"Games")
-
 query.order(byDescending: "timeAt")
-
 query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
-
    if let error = error { 
-   
       print(error.localizedDescription)
-      
    } else if let posts = posts {
-   
       print("Successfully retrieved list of games.")
-      
    }
-   
 }
+```
 
 - (Choose/FAVORITETEAM) Choose a favorite team to follow
 - (Choose/FAVORITEPLAYER) Choose a favorite player to follow
