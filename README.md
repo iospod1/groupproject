@@ -119,7 +119,7 @@ This app will use many APIs built by https://app.sportdataapi.com/ to display in
 | teamIcon | Image| The image of the team|
 
 ### Networking
-Home Feed Screen
+##Home Feed Screen
 (Read/GET) Query list of games 
 let query = PFQuery(className:"Games")
 query.order(byDescending: "timeAt")
@@ -130,12 +130,12 @@ query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
       print("Successfully retrieved list of games.")
    }
 }
-(Choose/FAVORITETEAM) Choose a favorite team to follow
-(Choose/FAVORITEPLAYER) Choose a favorite player to follow
-(Remove/FAVORITE TEAM) Remove existing favorie team
-(Create/POST) Create a new comment on a post
-(Delete) Delete existing comment
-Create League Table
+#(Choose/FAVORITETEAM) Choose a favorite team to follow
+#(Choose/FAVORITEPLAYER) Choose a favorite player to follow
+#(Remove/FAVORITE TEAM) Remove existing favorie team
+#(Create/POST) Create a new comment on a post
+#(Delete) Delete existing comment
+##Create League Table
 (Create/LEAGUETABLE) Create a new league table object
-User Screen
+##User Screen
 (Read/GETFAVORITETEAM) Query logged to show user's favorite team
