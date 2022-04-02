@@ -120,22 +120,32 @@ This app will use many APIs built by https://app.sportdataapi.com/ to display in
 
 ### Networking
 1. **Home Feed Screen**
-(Read/GET) Query list of games 
+- (Read/GET) Query list of games 
+
 let query = PFQuery(className:"Games")
+
 query.order(byDescending: "timeAt")
+
 query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+
    if let error = error { 
+   
       print(error.localizedDescription)
+      
    } else if let posts = posts {
+   
       print("Successfully retrieved list of games.")
+      
    }
+   
 }
+
 - (Choose/FAVORITETEAM) Choose a favorite team to follow
 - (Choose/FAVORITEPLAYER) Choose a favorite player to follow
 - (Remove/FAVORITE TEAM) Remove existing favorie team
 - (Create/POST) Create a new comment on a post
 - (Delete) Delete existing comment
 2. **Create League Table**
-(Create/LEAGUETABLE) Create a new league table object
+- (Create/LEAGUETABLE) Create a new league table object
 3. **User Screen**
-(Read/GETFAVORITETEAM) Query logged to show user's favorite team
+- (Read/GETFAVORITETEAM) Query logged to show user's favorite team
