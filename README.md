@@ -142,3 +142,13 @@ query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
 - (Create/LEAGUETABLE) Create a new league table object
 3. **User Screen**
 - (Read/GETFAVORITETEAM) Query logged to show user's favorite team
+
+
+## User Stories
+
+The following functionality is included in the App:
+
+- [ ] User sees Launch Screen upon launch of App.
+- [ ] User can navigate to different Views with Navigation Bar
+- [ ] User can see rolling list of teams in "Teams" page
+- [ ] User can see rolling list of players in "Players" page
