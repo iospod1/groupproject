@@ -43,7 +43,7 @@
                         <viewLayoutGuide key="safeArea" id="bgh-LM-vbJ"/>
                         <color key="backgroundColor" red="0.55598796220000002" green="0.85420068029999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Teams" id="hwK-N2-6H4"/>
+                    <tabBarItem key="tabBarItem" title="" selectedImage="Team" id="hwK-N2-6H4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q0K-Ig-AEj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -155,6 +155,7 @@
         <image name="AaronRamsey" width="408" height="612"/>
         <image name="ChelseaFC" width="1200" height="1200"/>
         <image name="Players" width="2048" height="1152"/>
+        <image name="Team" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
