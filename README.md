@@ -153,3 +153,9 @@ The following functionality is included in the App:
 - [X] User can see rolling list of teams in "Teams" page
 - [X] User can see rolling list of players in "Players" page
 - [X] User can see rolling list of top Bets in "Bets" page
+
+
+## GIFs
+Unit 7
+
+<img src='https://github.com/iospod1/groupproject/blob/main/GIFs/FootyHiLite%20-%20Apr9.gif' title='Video Walkthrough' width='200' alt='Video Walkthrough' />
