@@ -150,5 +150,6 @@ The following functionality is included in the App:
 
 - [x] User sees Launch Screen upon launch of App.
 - [x] User can navigate to different Views with Navigation Bar
-- [ ] User can see rolling list of teams in "Teams" page
-- [ ] User can see rolling list of players in "Players" page
+- [X] User can see rolling list of teams in "Teams" page
+- [X] User can see rolling list of players in "Players" page
+- [X] User can see rolling list of top Bets in "Bets" page
