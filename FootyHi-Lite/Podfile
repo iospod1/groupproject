@@ -8,6 +8,7 @@ target 'FootyHi-Lite' do
   # Pods for FootyHi-Lite
   pod ‘Parse’
   pod ‘AlamofireImage’
+  pod 'BDBOAuth1Manager'
 
   target 'FootyHi-LiteTests' do
     inherit! :search_paths
