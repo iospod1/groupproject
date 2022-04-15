@@ -13,6 +13,7 @@
 		D7A431D12802124200521A64 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A431D02802124200521A64 /* PlayerViewController.swift */; };
 		D7A431D32802139600521A64 /* BetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A431D22802139600521A64 /* BetCell.swift */; };
 		D7A431D5280213B000521A64 /* BetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A431D4280213B000521A64 /* BetViewController.swift */; };
+		D7B5B55B280A2D140059DA97 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B5B55A280A2D140059DA97 /* LoginViewController.swift */; };
 		D7E2C67D27F8CF6A004A94D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2C67C27F8CF6A004A94D4 /* AppDelegate.swift */; };
 		D7E2C67F27F8CF6A004A94D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2C67E27F8CF6A004A94D4 /* SceneDelegate.swift */; };
 		D7E2C68127F8CF6A004A94D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2C68027F8CF6A004A94D4 /* ViewController.swift */; };
@@ -48,6 +49,7 @@
 		D7A431D02802124200521A64 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		D7A431D22802139600521A64 /* BetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetCell.swift; sourceTree = "<group>"; };
 		D7A431D4280213B000521A64 /* BetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetViewController.swift; sourceTree = "<group>"; };
+		D7B5B55A280A2D140059DA97 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D7E2C67927F8CF6A004A94D4 /* FootyHi-Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FootyHi-Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E2C67C27F8CF6A004A94D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7E2C67E27F8CF6A004A94D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				D7A431D02802124200521A64 /* PlayerViewController.swift */,
 				D7A431D22802139600521A64 /* BetCell.swift */,
 				D7A431D4280213B000521A64 /* BetViewController.swift */,
+				D7B5B55A280A2D140059DA97 /* LoginViewController.swift */,
 			);
 			path = "FootyHi-Lite";
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				D7A431D12802124200521A64 /* PlayerViewController.swift in Sources */,
 				D7A431CD280209CB00521A64 /* TeamCell.swift in Sources */,
 				D7E2C67D27F8CF6A004A94D4 /* AppDelegate.swift in Sources */,
+				D7B5B55B280A2D140059DA97 /* LoginViewController.swift in Sources */,
 				D7E2C67F27F8CF6A004A94D4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
