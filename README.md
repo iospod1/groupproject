@@ -150,9 +150,11 @@ The following functionality is included in the App:
 
 - [x] User sees Launch Screen upon launch of App.
 - [x] User can navigate to different Views with Navigation Bar
-- [X] User can see rolling list of teams in "Teams" page
-- [X] User can see rolling list of players in "Players" page
-- [X] User can see rolling list of top Bets in "Bets" page
+- [X] User can see template of teams in "Teams" page
+- [X] User can see template of players in "Players" page
+- [X] User can see template of top Bets in "Bets" page
+- [X] User can Sign Up, Sign In and Logout of session.
+- [X] API Call Progress - obtained Parse Backend API Key, SportDataApp API key.
 
 
 ## GIFs
