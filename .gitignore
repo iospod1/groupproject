@@ -1,3 +1,8 @@
 
 FootyHi-Lite/FootyHi-Lite.xcodeproj/project.xcworkspace/xcuserdata/gyaltsen_tenzin.xcuserdatad/UserInterfaceState.xcuserstate
 FootyHi-Lite/FootyHi-Lite.xcodeproj/xcuserdata/gyaltsen_tenzin.xcuserdatad/xcschemes/xcschememanagement.plist
+*.xcuserstate
+*.plist
+*.xcuserstate
+.DS_Store
+FootyHi-Lite/FootyHi-Lite/Base.lproj/Main.storyboard
