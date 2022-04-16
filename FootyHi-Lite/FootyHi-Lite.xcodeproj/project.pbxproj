@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		16F8C681D688D8BE90A3E8FF /* Pods_FootyHi_Lite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0AD86D2FBE2794209B1D3F /* Pods_FootyHi_Lite.framework */; };
 		64AB7D009146F098A9FAC3D9 /* Pods_FootyHi_Lite_FootyHi_LiteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6FCE3E15175F0C8D07CFD7 /* Pods_FootyHi_Lite_FootyHi_LiteUITests.framework */; };
+		B62545AF280B440C009A9B43 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62545AE280B440C009A9B43 /* API.swift */; };
 		D7A0800F280A3AC900004DAC /* SportDataAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A0800E280A3AC900004DAC /* SportDataAPICaller.swift */; };
 		D7A431C92802089100521A64 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A431C82802089100521A64 /* TeamViewController.swift */; };
 		D7A431CD280209CB00521A64 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A431CC280209CB00521A64 /* TeamCell.swift */; };
@@ -53,6 +54,7 @@
 		6B54488229076DE00C7B2479 /* Pods-FootyHi-LiteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootyHi-LiteTests.release.xcconfig"; path = "Target Support Files/Pods-FootyHi-LiteTests/Pods-FootyHi-LiteTests.release.xcconfig"; sourceTree = "<group>"; };
 		6FF72B35ED1F1FD2BDB5FDBF /* Pods-FootyHi-Lite-FootyHi-LiteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootyHi-Lite-FootyHi-LiteUITests.debug.xcconfig"; path = "Target Support Files/Pods-FootyHi-Lite-FootyHi-LiteUITests/Pods-FootyHi-Lite-FootyHi-LiteUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		88E9636F6700C77B7C44583E /* Pods-FootyHi-Lite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootyHi-Lite.release.xcconfig"; path = "Target Support Files/Pods-FootyHi-Lite/Pods-FootyHi-Lite.release.xcconfig"; sourceTree = "<group>"; };
+		B62545AE280B440C009A9B43 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		D7A0800E280A3AC900004DAC /* SportDataAPICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportDataAPICaller.swift; sourceTree = "<group>"; };
 		D7A431C82802089100521A64 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		D7A431CC280209CB00521A64 /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				D7A431D4280213B000521A64 /* BetViewController.swift */,
 				D7B5B55A280A2D140059DA97 /* LoginViewController.swift */,
 				D7A0800E280A3AC900004DAC /* SportDataAPICaller.swift */,
+				B62545AE280B440C009A9B43 /* API.swift */,
 			);
 			path = "FootyHi-Lite";
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				D7A0800F280A3AC900004DAC /* SportDataAPICaller.swift in Sources */,
 				D7E2C67D27F8CF6A004A94D4 /* AppDelegate.swift in Sources */,
 				D7B5B55B280A2D140059DA97 /* LoginViewController.swift in Sources */,
+				B62545AF280B440C009A9B43 /* API.swift in Sources */,
 				D7E2C67F27F8CF6A004A94D4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,6 +18,7 @@ class PlayerViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         tableView.delegate = self
         tableView.dataSource = self
+        SportDataAPICaller.getSoccerLeague(SportDataAPICaller)
         
         // Load list of teams each time
         // Do any additional setup after loading the view.
