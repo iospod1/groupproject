@@ -161,3 +161,9 @@ The following functionality is included in the App:
 Unit 7
 
 <img src='https://github.com/iospod1/groupproject/blob/main/GIFs/FootyHiLite%20-%20Apr9.gif' title='Video Walkthrough' width='200' alt='Video Walkthrough' />
+
+
+## GIFs
+Unit 8
+
+<img src='https://github.com/iospod1/groupproject/blob/main/GIFs/FootyHiLite%20-%20Apr15.gif' title='Video Walkthrough' width='200' alt='Video Walkthrough' />
