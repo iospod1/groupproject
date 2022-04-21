@@ -8,6 +8,7 @@
 import UIKit
 import Parse
 
+
 class PlayerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     

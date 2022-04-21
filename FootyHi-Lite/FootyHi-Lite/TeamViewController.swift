@@ -7,11 +7,17 @@
 
 import UIKit
 import Parse
+import AlamofireImage
 
 class TeamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     var teamArray = [NSDictionary]()
+    
+    
+    var leagueDataDict: [String: AnyObject] = [:] //as? [NSDictionary]()
+    var standingsArray: [[String:Any]] = [[:]]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,13 +25,20 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         
+        
         // Load list of teams each time
         // Do any additional setup after loading the view.
 //        self.tableView.rowHeight = UITableView.automaticDimension
 //        self.tableView.estimatedRowHeight = 150
         
+<<<<<<< Updated upstream
         URLSession.shared.dataTask(with: URL(string: "https://app.sportdataapi.com/api/v1/soccer/standings?apikey=\(API_KEY)&season_id=456")!)
         { [self] (data, response, error) -> Void in
+=======
+        // With standings API Load list of teams each time, with their stats and ID
+        URLSession.shared.dataTask(with: URL(string: "https://app.sportdataapi.com/api/v1/soccer/standings?apikey=\(API_KEY)&season_id=1980")!)
+        { (data, response, error) -> Void in
+>>>>>>> Stashed changes
             // Check if data was received successfully
             if error == nil && data != nil {
                 do {
@@ -33,24 +46,41 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     // Convert to dictionary where keys are of type String, and values are of any type
                     let JSONResponse = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: Any]
                     // Access specific key with value of type String
+<<<<<<< Updated upstream
                     let dataDict =  JSONResponse["data"] as! [String: Any]
                     teamArray = dataDict["standings"] as! [NSDictionary]
                     print(teamArray)
+=======
+                    let dataDict =  JSONResponse["data"] as! [String: AnyObject]
+                    //leagueDataDict = dataDict
+                    print(dataDict)
+                    self.leagueDataDict = dataDict
+                    
+                    self.tableView.reloadData()
+>>>>>>> Stashed changes
                 } catch {
                     // Something went wrong
                     print("JSON Query Failed!")
                 }
             }
-        
         }.resume()
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return leagueDataDict.count
     }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath) as! TeamCell
+        
+        
+        let standings = leagueDataDict["standings"]
+        let team = standings[indexPath.item] as? [[String:Any]]
+        
+        
+        
         
         cell.teamName.text = "Chelsea FC"
         cell.homeCity.text = "London UK"
