@@ -12,14 +12,10 @@ import AlamofireImage
 class TeamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    var teamArray = [NSDictionary]()
-    
-    
-    var leagueDataDict: [String: AnyObject] = [:] //as? [NSDictionary]()
-    var standingsArray: [[String:Any]] = [[:]]
     var standings: [AnyObject] = []
     
     var teams : [Int:Int] = [:]
+    var teamNames: [Int: String] = [:]
     
     
     override func viewDidLoad() {
@@ -27,7 +23,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.delegate = self
         tableView.dataSource = self
-        
         
         // Load list of teams each time
         // Do any additional setup after loading the view.
@@ -50,8 +45,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     for singleTeam in standings {
                         teams[singleTeam["team_id"] as! Int] = (singleTeam["points"] as! Int)
                     }
-                    print(teams)
-                    self.leagueDataDict = dataDict
                     
                 } catch {
                     // Something went wrong
@@ -60,7 +53,29 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }.resume()
         
+        
+        URLSession.shared.dataTask(with: URL(string: "https://app.sportdataapi.com/api/v1/soccer/teams/\(teams.keys.first)?apikey=\(API_KEY)")!)
+        { [self] (data, response, error) -> Void in
+            // Check if data was received successfully
+            if error == nil && data != nil {
+                do {
+                    print("JSON Query Success!")
+                    // Convert to dictionary where keys are of type String, and values are of any type
+                    let JSONResponse = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: Any]
+                    // Access specific key with value of type String
+                    let dataDict =  JSONResponse["data"] as! [String: AnyObject]
+                    teamNames[dataDict["team_id"] as! Int] = (dataDict["name"] as! String)
+                    print(teamNames.values)
+                } catch {
+                    // Something went wrong
+                    print("JSON Query Failed!")
+                }
+            }
+        }.resume()
+        
     }
+    
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -71,6 +86,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath) as! TeamCell
                 
         cell.teamName.text = "\(teams.first?.key)"
+        print(cell.teamName)
         
         cell.homeCity.text = "\(teams.first?.value)"
         
@@ -85,9 +101,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 200
-        }
-    
+        return 200
+    }
 
     @IBAction func onLogoutButton(_ sender: Any) {
         PFUser.logOut()
