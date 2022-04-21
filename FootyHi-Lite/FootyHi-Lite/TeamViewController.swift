@@ -22,6 +22,25 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
 //        self.tableView.rowHeight = UITableView.automaticDimension
 //        self.tableView.estimatedRowHeight = 150
+        
+        URLSession.shared.dataTask(with: URL(string: "https://app.sportdataapi.com/api/v1/soccer/standings?apikey=\(API_KEY)&season_id=456")!)
+        { (data, response, error) -> Void in
+            // Check if data was received successfully
+            if error == nil && data != nil {
+                do {
+                    print("JSON Query Success!")
+                    // Convert to dictionary where keys are of type String, and values are of any type
+                    let JSONResponse = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: Any]
+                    // Access specific key with value of type String
+                    let dataDict =  JSONResponse["data"] as! [String: AnyObject]
+                    print(dataDict)
+                } catch {
+                    // Something went wrong
+                    print("JSON Query Failed!")
+                }
+            }
+        
+        }.resume()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
