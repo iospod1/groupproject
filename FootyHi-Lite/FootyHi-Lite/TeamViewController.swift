@@ -12,9 +12,8 @@ import AlamofireImage
 class TeamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    var standings: [AnyObject] = []
+    var standings = [[String:AnyObject]]()
     
-    var teams : [Int:Int] = [:]
     var teamNames: [Int: String] = [:]
     
     
@@ -40,11 +39,14 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     // Access specific key with value of type String
  
                     let dataDict =  JSONResponse["data"] as! [String: AnyObject]
-                    //print(dataDict["standings"])
-                    self.standings = dataDict["standings"] as! [AnyObject]
-                    for singleTeam in standings {
-                        teams[singleTeam["team_id"] as! Int] = (singleTeam["points"] as! Int)
-                    }
+                    self.standings = dataDict["standings"] as! [[String: AnyObject]]
+                    print(standings.count)
+                    print(standings[0])
+                    //print(dataDict)
+//                    for singleTeam in standings {
+//                        teams[singleTeam["team_id"] as! Int] = (singleTeam["points"] as! Int)
+//                    }
+                   // print(teams)
                     
                 } catch {
                     // Something went wrong
@@ -54,47 +56,47 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         }.resume()
         
         
-        URLSession.shared.dataTask(with: URL(string: "https://app.sportdataapi.com/api/v1/soccer/teams/\(teams.keys.first)?apikey=\(API_KEY)")!)
-        { [self] (data, response, error) -> Void in
-            // Check if data was received successfully
-            if error == nil && data != nil {
-                do {
-                    print("JSON Query Success!")
-                    // Convert to dictionary where keys are of type String, and values are of any type
-                    let JSONResponse = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: Any]
-                    // Access specific key with value of type String
-                    let dataDict =  JSONResponse["data"] as! [String: AnyObject]
-                    teamNames[dataDict["team_id"] as! Int] = (dataDict["name"] as! String)
-                    print(teamNames.values)
-                } catch {
-                    // Something went wrong
-                    print("JSON Query Failed!")
-                }
-            }
-        }.resume()
+//        URLSession.shared.dataTask(with: URL(string: "https://app.sportdataapi.com/api/v1/soccer/teams/\(teams.keys.first)?apikey=\(API_KEY)")!)
+//        { [self] (data, response, error) -> Void in
+//            // Check if data was received successfully
+//            if error == nil && data != nil {
+//                do {
+//                    print("JSON Query Success!")
+//                    // Convert to dictionary where keys are of type String, and values are of any type
+//                    let JSONResponse = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: Any]
+//                    // Access specific key with value of type String
+//                    let dataDict =  JSONResponse["data"] as! [String: AnyObject]
+//                    teamNames[dataDict["team_id"] as! Int] = (dataDict["name"] as! String)
+//                    print(teamNames.values)
+//                } catch {
+//                    // Something went wrong
+//                    print("JSON Query Failed!")
+//                }
+//            }
+//        }.resume()
         
     }
     
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return standings.count
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath) as! TeamCell
                 
-        cell.teamName.text = "\(teams.first?.key)"
-        print(cell.teamName)
-        
-        cell.homeCity.text = "\(teams.first?.value)"
-        
+        let team = self.standings[indexPath.row]
+        print(team)
+        let teamPoints = team["points"]
+        let teamId = team["team_id"] as? Int ?? 0
+        cell.teamName.text = String(teamId)
+
+        cell.teamPoints.text = teamPoints as? String
+
         cell.teamLogo.image = UIImage(named: "ChelseaFC")
-        
-//        cell.teamName.text = "Chelsea FC"
-//        cell.homeCity.text = "London UK"
-//        cell.teamLogo.image = UIImage(named: "ChelseaFC")
+ 
 
         return cell
     }

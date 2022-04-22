@@ -37,7 +37,7 @@ class PlayerViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let JSONResponse = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: Any]
                     // Access specific key with value of type String
                     let dataDict =  JSONResponse["data"] as? [AnyObject]
-                    print(dataDict)
+                    //print(dataDict)
                 } catch {
                     // Something went wrong
                     print("JSON Query Failed!")

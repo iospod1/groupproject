@@ -14,8 +14,7 @@ class TeamCell: UITableViewCell {
     
     @IBOutlet weak var teamLogo: UIImageView!
     @IBOutlet weak var teamName: UILabel!
-    @IBOutlet weak var homeCity: UILabel!
-    
+    @IBOutlet weak var teamPoints: UILabel!
     
     
     
