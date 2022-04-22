@@ -13,10 +13,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     var standings = [[String:AnyObject]]()
-    
-    var teamNames: [Int: String] = [:]
-    
-    
+    var teams = [[String:AnyObject]] ()
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,56 +26,30 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         //        self.tableView.rowHeight = UITableView.automaticDimension
         //        self.tableView.estimatedRowHeight = 150
         // With standings API Load list of teams each time, with their stats and ID
-        URLSession.shared.dataTask(with: URL(string: "https://app.sportdataapi.com/api/v1/soccer/standings?apikey=\(API_KEY)&season_id=1980")!)
-        { [self] (data, response, error) -> Void in
-            // Check if data was received successfully
-            if error == nil && data != nil {
-                do {
-                    print("JSON Query Success!")
-                    // Convert to dictionary where keys are of type String, and values are of any type
-                    let JSONResponse = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: Any]
-                    // Access specific key with value of type String
- 
-                    let dataDict =  JSONResponse["data"] as! [String: AnyObject]
-                    self.standings = dataDict["standings"] as! [[String: AnyObject]]
-                    print(standings.count)
-                    print(standings[0])
-                    //print(dataDict)
-//                    for singleTeam in standings {
-//                        teams[singleTeam["team_id"] as! Int] = (singleTeam["points"] as! Int)
-//                    }
-                   // print(teams)
-                    
-                } catch {
-                    // Something went wrong
-                    print("JSON Query Failed!")
-                }
-            }
-        }.resume()
-        
-        
-//        URLSession.shared.dataTask(with: URL(string: "https://app.sportdataapi.com/api/v1/soccer/teams/\(teams.keys.first)?apikey=\(API_KEY)")!)
-//        { [self] (data, response, error) -> Void in
-//            // Check if data was received successfully
-//            if error == nil && data != nil {
-//                do {
-//                    print("JSON Query Success!")
-//                    // Convert to dictionary where keys are of type String, and values are of any type
-//                    let JSONResponse = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: Any]
-//                    // Access specific key with value of type String
-//                    let dataDict =  JSONResponse["data"] as! [String: AnyObject]
-//                    teamNames[dataDict["team_id"] as! Int] = (dataDict["name"] as! String)
-//                    print(teamNames.values)
-//                } catch {
-//                    // Something went wrong
-//                    print("JSON Query Failed!")
-//                }
-//            }
-//        }.resume()
-        
-    }
-    
 
+        let url = URL(string: "https://app.sportdataapi.com/api/v1/soccer/standings?apikey=\(API_KEY)&season_id=1980")!
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+             // This will run when the network request returns
+             if let error = error {
+                     print(error.localizedDescription)
+             } else if let data = data {
+                    let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
+
+                    // TODO: Get the array of movies
+                    // TODO: Store the movies in a property to use elsewhere
+                    // TODO: Reload your table view data
+                 let dataDict =  dataDictionary["data"] as! [String: AnyObject]
+                 self.standings = dataDict["standings"] as! [[String: AnyObject]]
+                 self.tableView.reloadData()
+
+             }
+        }
+        
+        task.resume()
+   
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return standings.count
@@ -87,23 +59,48 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath) as! TeamCell
                 
-        let team = self.standings[indexPath.row]
-        print(team)
-        let teamPoints = team["points"]
+        let team = standings[indexPath.row]
+        let teamPoints = team["points"] as? Int ?? 0
         let teamId = team["team_id"] as? Int ?? 0
+        let teamName = getTeamName(team_id: teamId)
+        
         cell.teamName.text = String(teamId)
-
-        cell.teamPoints.text = teamPoints as? String
-
+        //print(teamName)
+        cell.teamPoints.text = String(teamPoints)
+        //print(teamPoints)
         cell.teamLogo.image = UIImage(named: "ChelseaFC")
- 
-
+        
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
+    }
+    
+    func getTeamName (team_id: Int) -> String {
+        var teamName = ""
+        let teamUrl = URL(string: "https://app.sportdataapi.com/api/v1/soccer/teams/\(team_id)?apikey=\(API_KEY)")!
+        let teamRequest = URLRequest(url: teamUrl, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        let teamSession = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let teamTask = teamSession.dataTask(with: teamRequest) { (data, response, error) in
+             // This will run when the network request returns
+             if let error = error {
+                     print(error.localizedDescription)
+             } else if let data = data {
+                    let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
+
+                    // TODO: Get the array of movies
+                    // TODO: Store the movies in a property to use elsewhere
+                    // TODO: Reload your table view data
+                 let dataDict =  dataDictionary["data"] as! [String: AnyObject]
+                 teamName = dataDict["short_code"] as! String
+                 print(teamName)
+                 self.tableView.reloadData()
+             }
+        }
+        
+        return teamName
     }
 
     @IBAction func onLogoutButton(_ sender: Any) {
