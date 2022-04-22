@@ -13,7 +13,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     var standings = [[String:AnyObject]]()
-    var teams = [[String:AnyObject]] ()
+    var clubs = [[String:AnyObject]] ()
+    var name = [[String:AnyObject]]()
+    var logo = [String:AnyObject]()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +50,31 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         task.resume()
+        
+        
+        let teamUrl = URL(string: "https://app.sportdataapi.com/api/v1/soccer/teams?apikey=\(API_KEY)&country_id=42")!
+        let teamRequest = URLRequest(url: teamUrl, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 200)
+        let teamSession = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let teamTask = teamSession.dataTask(with: teamRequest) { (data, response, error) in
+             // This will run when the network request returns
+             if let error = error {
+                     print(error.localizedDescription)
+             } else if let data = data {
+                    let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
+
+                    // TODO: Get the array of movies
+                    // TODO: Store the movies in a property to use elsewhere
+                    // TODO: Reload your table view data
+                 let dataDict =  dataDictionary["data"] as! [[String: AnyObject]]
+                 self.clubs = dataDict
+                 
+                 print(self.clubs)
+                 self.tableView.reloadData()
+             }
+        }
+        teamTask.resume()
+        
+     
    
     }
     
@@ -60,9 +87,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath) as! TeamCell
                 
         let team = standings[indexPath.row]
+        let name = clubs.first
         let teamPoints = team["points"] as? Int ?? 0
         let teamId = team["team_id"] as? Int ?? 0
-        let teamName = getTeamName(team_id: teamId)
         
         cell.teamName.text = String(teamId)
         //print(teamName)
@@ -76,31 +103,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
-    }
-    
-    func getTeamName (team_id: Int) -> String {
-        var teamName = ""
-        let teamUrl = URL(string: "https://app.sportdataapi.com/api/v1/soccer/teams/\(team_id)?apikey=\(API_KEY)")!
-        let teamRequest = URLRequest(url: teamUrl, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        let teamSession = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        let teamTask = teamSession.dataTask(with: teamRequest) { (data, response, error) in
-             // This will run when the network request returns
-             if let error = error {
-                     print(error.localizedDescription)
-             } else if let data = data {
-                    let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
-
-                    // TODO: Get the array of movies
-                    // TODO: Store the movies in a property to use elsewhere
-                    // TODO: Reload your table view data
-                 let dataDict =  dataDictionary["data"] as! [String: AnyObject]
-                 teamName = dataDict["short_code"] as! String
-                 print(teamName)
-                 self.tableView.reloadData()
-             }
-        }
-        
-        return teamName
     }
 
     @IBAction func onLogoutButton(_ sender: Any) {
