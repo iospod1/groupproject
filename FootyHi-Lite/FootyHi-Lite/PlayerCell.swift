@@ -9,9 +9,10 @@ import UIKit
 
 class PlayerCell: UITableViewCell {
 
+    @IBOutlet weak var position: UILabel!
     @IBOutlet weak var playerName: UILabel!
-    @IBOutlet weak var playerPortrait: UIImageView!
     @IBOutlet weak var teamName: UILabel!
+    @IBOutlet weak var goals: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

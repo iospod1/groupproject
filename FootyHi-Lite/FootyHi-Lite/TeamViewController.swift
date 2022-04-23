@@ -38,10 +38,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                      print(error.localizedDescription)
              } else if let data = data {
                     let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
-
-                    // TODO: Get the array of movies
-                    // TODO: Store the movies in a property to use elsewhere
-                    // TODO: Reload your table view data
+ 
                  let dataDict =  dataDictionary["data"] as! [String: AnyObject]
                  self.standings = dataDict["standings"] as! [[String: AnyObject]]
                  // print(self.standings)
@@ -62,10 +59,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                      print(error.localizedDescription)
              } else if let data = data {
                     let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
-
-                    // TODO: Get the array of movies
-                    // TODO: Store the movies in a property to use elsewhere
-                    // TODO: Reload your table view data
+ 
                  let dataDict =  dataDictionary["data"] as! [[String: AnyObject]]
                  self.clubs = dataDict
                  // print("CLUB")
@@ -74,9 +68,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
              }
         }
         teamTask.resume()
-        
-     
-   
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,9 +79,6 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath) as! TeamCell
                 
         let team = standings[indexPath.row]
-        print("TEAM")
-        print(team)
-    
         let name = clubs.first
         let teamPoints = team["points"] as? Int ?? 0
         let teamId = team["team_id"] as? Int ?? 0
