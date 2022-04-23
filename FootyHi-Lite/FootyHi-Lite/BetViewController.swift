@@ -19,7 +19,7 @@ class BetViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         tableView.delegate = self
         tableView.dataSource = self
         
-        let url = URL(string: "https://app.sportdataapi.com/api/v1/soccer/matches?apikey=\(API_KEY)&season_id=1980&date_from=2022-04-25")!
+        let url = URL(string: "https://app.sportdataapi.com/api/v1/soccer/matches?apikey=\(API_KEY)&season_id=1980&date_from=2022-04-25&date_to=2022-05-22")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
