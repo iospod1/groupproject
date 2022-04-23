@@ -32,7 +32,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         let url = URL(string: "https://app.sportdataapi.com/api/v1/soccer/standings?apikey=\(API_KEY)&season_id=1980")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        let task = session.dataTask(with: request) { (data, response, error) in
+        let task = session.dataTask(with: request) { [self] (data, response, error) in
              // This will run when the network request returns
              if let error = error {
                      print(error.localizedDescription)
@@ -44,6 +44,7 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     // TODO: Reload your table view data
                  let dataDict =  dataDictionary["data"] as! [String: AnyObject]
                  self.standings = dataDict["standings"] as! [[String: AnyObject]]
+                 // print(self.standings)
                  self.tableView.reloadData()
 
              }
@@ -67,8 +68,8 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
                     // TODO: Reload your table view data
                  let dataDict =  dataDictionary["data"] as! [[String: AnyObject]]
                  self.clubs = dataDict
-                 
-                 print(self.clubs)
+                 // print("CLUB")
+                 // print(self.clubs)
                  self.tableView.reloadData()
              }
         }
@@ -87,16 +88,30 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath) as! TeamCell
                 
         let team = standings[indexPath.row]
+        print("TEAM")
+        print(team)
+    
         let name = clubs.first
         let teamPoints = team["points"] as? Int ?? 0
         let teamId = team["team_id"] as? Int ?? 0
+        let gameplayed = team["overall"]!["games_played"] as? Int ?? 0
+        let Position = team["position"] as? Int ?? 0
         
-        cell.teamName.text = String(teamId)
-        //print(teamName)
-        cell.teamPoints.text = String(teamPoints)
-        //print(teamPoints)
-        cell.teamLogo.image = UIImage(named: "ChelseaFC")
-        
+        for val in clubs {
+            if val["team_id"] as! Int == teamId{
+                cell.teamName.text = val["name"] as! String
+                //print(teamName)
+                cell.teamPoints.text = String(teamPoints)
+                
+                let imageURL = URL(string: (val["logo"] as? String)!)
+                let image = try? Data(contentsOf: imageURL!)
+                cell.teamLogo.image = UIImage(data: image!)
+                
+                cell.gamePlayed.text = String(gameplayed)
+                cell.P.text = String(Position)
+                
+            }
+        }
         return cell
     }
     

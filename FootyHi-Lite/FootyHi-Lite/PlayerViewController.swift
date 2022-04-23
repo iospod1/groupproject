@@ -14,6 +14,8 @@ class PlayerViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var tableView: UITableView!
     
+    var player = [[String:AnyObject]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,40 +28,44 @@ class PlayerViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //        self.tableView.rowHeight = UITableView.automaticDimension
 //        self.tableView.estimatedRowHeight = 150
         
-        URLSession.shared.dataTask(with: URL(string:
-    "https://app.sportdataapi.com/api/v1/soccer/topscorers?apikey=\(API_KEY)&season_id=352")!)
-        { (data, response, error) -> Void in
-            // Check if data was received successfully
-            if error == nil && data != nil {
-                do {
-                    print("JSON Query Success!")
-                    // Convert to dictionary where keys are of type String, and values are of any type
-                    let JSONResponse = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: Any]
-                    // Access specific key with value of type String
-                    let dataDict =  JSONResponse["data"] as? [AnyObject]
-                    //print(dataDict)
-                } catch {
-                    // Something went wrong
-                    print("JSON Query Failed!")
-                }
-            }
-        
-        }.resume()
+        let url = URL(string: "https://v3.football.api-sports.io/players?league=39&season=2021&x-rapidapi-key=\(API_KEY_NEW_WEB)&x-rapidapi-host=x-rapidapi-host")!
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+             // This will run when the network request returns
+             if let error = error {
+                     print(error.localizedDescription)
+             } else if let data = data {
+                    let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
+
+                    // TODO: Get the array of movies
+                    // TODO: Store the movies in a property to use elsewhere
+                    // TODO: Reload your table view data
+                 print(dataDictionary)
+                 let dataDict =  dataDictionary["response"] as! [[String: AnyObject]]
+                 print("Break")
+                 print(dataDictionary["response"])
+                 self.player = dataDict
+                 self.tableView.reloadData()
+
+             }
+        }
+        task.resume()
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.player.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath) as! PlayerCell
 
+        let temp_player = player[indexPath.row]
         
-        cell.playerName.text = "Aaron Ramsey"
-        cell.teamName.text = "Arsenal FC"
-        cell.playerPortrait.image = UIImage(named: "AaronRamsey")
-      
+        cell.playerName.text = temp_player["player"]?["player_name"] as? String
+        cell.teamName.text = temp_player["player"]?["team_name"] as? String
+        
         return cell
     }
     

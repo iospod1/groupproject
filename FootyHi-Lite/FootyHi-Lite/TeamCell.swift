@@ -15,7 +15,9 @@ class TeamCell: UITableViewCell {
     @IBOutlet weak var teamLogo: UIImageView!
     @IBOutlet weak var teamName: UILabel!
     @IBOutlet weak var teamPoints: UILabel!
+    @IBOutlet weak var gamePlayed: UILabel!
     
+    @IBOutlet weak var P: UILabel!
     
     
     override func awakeFromNib() {
