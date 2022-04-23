@@ -167,3 +167,9 @@ Unit 7
 Unit 8
 
 <img src='https://github.com/iospod1/groupproject/blob/main/GIFs/FootyHiLite%20-%20Apr15.gif' title='Video Walkthrough' width='200' alt='Video Walkthrough' />
+
+## GIFS
+Final Demo
+
+<img src='https://github.com/iospod1/groupproject/blob/main/GIFs/final.gif' title='Video Walkthrough' width='200' alt='Video Walkthrough' />
+
