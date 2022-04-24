@@ -61,11 +61,22 @@ class BetViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         
         cell.homeTeam.text = homeTeam
-        cell.homeLogo.image = UIImage(data: homeImage!)
+        if homeTeam == "Southampton FC" {
+            cell.homeLogo.image = UIImage(named: "st")
+        }
+        else {
+            cell.homeLogo.image = UIImage(data: homeImage!)
+        }
+       
         
         cell.awayTeam.text = awayTeam
-        cell.awayLogo.image = UIImage(data: awayImage!)
-                
+        if awayTeam == "Southampton FC" {
+            cell.awayLogo.image = UIImage(named: "st")
+        }
+        else {
+            cell.awayLogo.image = UIImage(data: awayImage!)
+        }
+        
         return cell
     }
     
